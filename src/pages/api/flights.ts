@@ -1,6 +1,6 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
 
-interface Flight {
+export interface Flight {
   show_to_affiliates: boolean,
   trip_class: number,
   origin: string,
@@ -14,7 +14,7 @@ interface Flight {
   actual: boolean,
 }
 
-interface Answer {
+ export interface Answer {
   success: boolean;
   data?: Flight[];
 }
@@ -48,6 +48,7 @@ export default async function handler(
   const aviasalesResponse = await fetch(url);
   const aviasalesResult = await aviasalesResponse.json();
 
+  // TODO: remove
   console.log(aviasalesResult)
 
   // Return result to client
