@@ -3,12 +3,12 @@ import Button from "../../../../shared/ui/Button/Button";
 import Select from "../../../../shared/ui/Select/Select";
 import {currencies, months} from "../../../../shared/ui/Select/constants";
 import {ChangeEvent, useState} from "react";
-import {useDispatch} from "react-redux";
 import {searchParamsSlice} from "../../searchParamsSlice";
+import {useAppDispatch} from "../../../../app/store";
 
 export default function SearchForm() {
   // For sending search params to Redux Store
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
   // Local search form state for form fields
   const [currency, setCurrency] = useState("RUB");
