@@ -1,22 +1,9 @@
 import type {NextApiRequest, NextApiResponse} from 'next'
-
-interface Flight {
-  show_to_affiliates: boolean,
-  trip_class: number,
-  origin: string,
-  destination: string,
-  depart_date: string,
-  return_date: string,
-  number_of_changes: number,
-  value: number,
-  found_at: string,
-  distance: number,
-  actual: boolean,
-}
+import {IFlight} from "../../entities/Flight/model/types";
 
 interface Answer {
   success: boolean;
-  data?: Flight[];
+  data?: IFlight[];
 }
 
 async function handler(
@@ -52,4 +39,4 @@ async function handler(
   res.status(200).json(aviasalesResult);
 }
 
-export { Flight, Answer, handler as default};
+export { handler as default};

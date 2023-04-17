@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
 import SearchForm from "../features/search-panel/ui/SearchForm/SearchForm";
-import SearchResults from "../features/search-results/ui/SearchResult/SearchResult";
+import SearchResults from "../features/low-prices-calendar/ui/SearchResults/SearchResults";
 
 export default function Home() {
   return (
