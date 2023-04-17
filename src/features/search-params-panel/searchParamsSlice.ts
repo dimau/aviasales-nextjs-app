@@ -7,13 +7,15 @@ interface ISearchParamsSlice {
   origin: string;
   destination: string;
   month: string;
+  changes: string;
 }
 
 const initialState: ISearchParamsSlice = {
-      currency: "",
-      origin: "",
-      destination: "",
-      month: "",
+      currency: "RUB",
+      origin: "LED",
+      destination: "HKT",
+      month: "2023-05-01",
+      changes: "100",
     };
 
 const searchParamsSlice = createSlice({
@@ -25,6 +27,7 @@ const searchParamsSlice = createSlice({
       state.origin = action.payload.origin;
       state.destination = action.payload.destination;
       state.month = action.payload.month;
+      state.changes = action.payload.changes;
     },
   },
   // Special reducer for hydrating the state

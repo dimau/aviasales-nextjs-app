@@ -1,6 +1,6 @@
 import {Action, combineReducers, configureStore, ThunkAction} from '@reduxjs/toolkit';
 import {createWrapper} from 'next-redux-wrapper';
-import {searchParamsSlice} from "../features/search-panel/searchParamsSlice";
+import {searchParamsSlice} from "../features/search-params-panel/searchParamsSlice";
 import {TypedUseSelectorHook, useDispatch, useSelector} from "react-redux";
 
 const rootReducer = combineReducers({

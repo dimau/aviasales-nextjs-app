@@ -1,7 +1,7 @@
 import SelectCityOrCountry from "../../../../shared/ui/SelectCityOrCountry/SelectCityOrCountry";
 import Button from "../../../../shared/ui/Button/Button";
 import Select from "../../../../shared/ui/Select/Select";
-import {currencies, months} from "../../../../shared/ui/Select/constants";
+import {currencies, months, changesOptions } from "../../../../shared/ui/Select/constants";
 import {ChangeEvent, useState} from "react";
 import {searchParamsSlice} from "../../searchParamsSlice";
 import {useAppDispatch} from "../../../../app/store";
@@ -15,12 +15,14 @@ export default function SearchForm() {
   const [origin, setOrigin] = useState("LED");
   const [destination, setDestination] = useState("HKT");
   const [month, setMonth] = useState("2023-05-01");
+  const [changes, setChanges] = useState("100")
 
   // Handlers for changing local search form state
   const handleChangeCurrency = (event: ChangeEvent<HTMLSelectElement>) => setCurrency(event.target.value);
   const handleChangeMonth = (event: ChangeEvent<HTMLSelectElement>) => setMonth(event.target.value);
   const handleChangeOrigin = (event: ChangeEvent<HTMLInputElement>) => setOrigin(event.target.value);
   const handleChangeDestination = (event: ChangeEvent<HTMLInputElement>) => setDestination(event.target.value);
+  const handleChangeFlightChanges = (event: ChangeEvent<HTMLSelectElement>) => setChanges(event.target.value);
 
 
   const handleSubmit = (event) => {
@@ -32,6 +34,7 @@ export default function SearchForm() {
       origin,
       destination,
       month,
+      changes,
     }));
   }
 
@@ -41,6 +44,7 @@ export default function SearchForm() {
         <Select name="month" options={months} value={month} handleChange={handleChangeMonth}/>
         <SelectCityOrCountry name="origin" value={origin} handleChange={handleChangeOrigin}/>
         <SelectCityOrCountry name="destination" value={destination} handleChange={handleChangeDestination}/>
+        <Select name={"changes"} value={changes} options={changesOptions} handleChange={handleChangeFlightChanges}/>
         <Button text="Search"/>
       </form>
   );
