@@ -23,12 +23,20 @@ const searchParamsSlice = createSlice({
   name: "searchParams",
   initialState,
   reducers: {
-    change: (state: ISearchParamsSlice, action: PayloadAction<ISearchParamsSlice>) => {
-      state.currency = action.payload.currency;
-      state.origin = action.payload.origin;
-      state.destination = action.payload.destination;
-      state.month = action.payload.month;
-      state.changes = action.payload.changes;
+    changeCurrency: (state: ISearchParamsSlice, action: PayloadAction<string>) => {
+      state.currency = action.payload;
+    },
+    changeMonth: (state: ISearchParamsSlice, action: PayloadAction<string>) => {
+      state.month = action.payload;
+    },
+    changeOrigin: (state: ISearchParamsSlice, action: PayloadAction<IOption>) => {
+      state.origin = action.payload;
+    },
+    changeDestination: (state: ISearchParamsSlice, action: PayloadAction<IOption>) => {
+      state.destination = action.payload;
+    },
+    changeChanges: (state: ISearchParamsSlice, action: PayloadAction<string>) => {
+      state.changes = action.payload;
     },
   },
   // Special reducer for hydrating the state
