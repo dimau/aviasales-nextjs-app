@@ -1,13 +1,14 @@
 import useSWR, { Fetcher } from 'swr'
 import Answer from "../../../pages/api/flights";
+import {IOption} from "../../search-params-panel/model/types";
 
-type FetcherParams = [string, string, string, string, string];
+type FetcherParams = [string, string, string, IOption, IOption];
 
 const flightsEndpoint = "/api/flights";
 
 const fetcher: Fetcher<Answer, FetcherParams> = (params) => {
   const [endpoint, currency, month, origin, destination] = params;
-  return fetch(`${endpoint}?currency=${currency}&month=${month}&origin=${origin}&destination=${destination}`)
+  return fetch(`${endpoint}?currency=${currency}&month=${month}&origin=${origin.id}&destination=${destination.id}`)
       .then(res => res.json());
 }
 

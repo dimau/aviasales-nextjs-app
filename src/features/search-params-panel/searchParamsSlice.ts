@@ -1,19 +1,20 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
 import { HYDRATE } from 'next-redux-wrapper';
 import {AppState} from "../../app/store";
+import {IOption} from "./model/types";
 
 interface ISearchParamsSlice {
   currency: string;
-  origin: string;
-  destination: string;
+  origin: IOption;
+  destination: IOption;
   month: string;
   changes: string;
 }
 
 const initialState: ISearchParamsSlice = {
       currency: "RUB",
-      origin: "LED",
-      destination: "HKT",
+      origin: {"label":"Санкт-Петербург, Россия, LED", "id":"LED"},
+      destination: {"label":"Пхукет, Таиланд, HKT", "id":"HKT"},
       month: "2023-05-01",
       changes: "100",
     };
