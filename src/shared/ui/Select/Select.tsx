@@ -1,20 +1,31 @@
+import SelectMUI from '@mui/material/Select';
+import FormControl from '@mui/material/FormControl';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+
 interface Option {
   title: string;
   value: string;
-  default: boolean;
 }
 
 interface ISelectProps {
-  name: string;
+  label: string;
   value: string;
   options: Option[];
   handleChange: () => void;
 }
 
-export default function Select({name, value, options, handleChange}: ISelectProps) {
+export default function Select({label, value, options, handleChange}: ISelectProps) {
   return (
-      <select name={name} onChange={handleChange} value={value}>
-        {options.map((option, index) => <option value={option.value} key={index}>{option.title}</option>)}
-      </select>
+      <FormControl fullWidth>
+        <InputLabel>{label}</InputLabel>
+        <SelectMUI
+            value={value}
+            label={label}
+            onChange={handleChange}
+        >
+          {options.map((option, index) => <MenuItem value={option.value} key={index}>{option.title}</MenuItem>)}
+        </SelectMUI>
+      </FormControl>
   );
 }

@@ -1,9 +1,10 @@
 import Select from "../../../../shared/ui/Select/Select";
 import {currencies, months, changesOptions } from "../../../../shared/ui/Select/constants";
-import React, {ChangeEvent} from "react";
+import React from "react";
 import {searchParamsSlice, selectSearchParams} from "../../searchParamsSlice";
 import {useAppDispatch, useAppSelector} from "../../../../app/store";
 import SelectIATA from "../SelectIATA/SelectIATA";
+import { SelectChangeEvent } from '@mui/material/Select';
 import {IOption} from "../../model/types";
 import styles from "./SearchForm.module.css";
 
@@ -15,11 +16,11 @@ export default function SearchForm() {
   const searchParams = useAppSelector(selectSearchParams);
 
   // Handlers for changing local search form state
-  const handleChangeCurrency = (event: ChangeEvent<HTMLSelectElement>) => dispatch(searchParamsSlice.actions.changeCurrency(event.target.value));
-  const handleChangeMonth = (event: ChangeEvent<HTMLSelectElement>) => dispatch(searchParamsSlice.actions.changeMonth(event.target.value));
+  const handleChangeCurrency = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeCurrency(event.target.value));
+  const handleChangeMonth = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeMonth(event.target.value));
   const handleChangeOrigin = (event: React.SyntheticEvent, value: IOption) => dispatch(searchParamsSlice.actions.changeOrigin(value));
   const handleChangeDestination = (event: React.SyntheticEvent, value: IOption) => dispatch(searchParamsSlice.actions.changeDestination(value));
-  const handleChangeFlightChanges = (event: ChangeEvent<HTMLSelectElement>) => dispatch(searchParamsSlice.actions.changeChanges(event.target.value));
+  const handleChangeFlightChanges = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeChanges(event.target.value));
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -32,9 +33,9 @@ export default function SearchForm() {
           <SelectIATA label={"Куда"} value={searchParams.destination} handleChange={handleChangeDestination}/>
         </div>
         <div className={styles.options}>
-          <Select name="currency" options={currencies} value={searchParams.currency} handleChange={handleChangeCurrency}/>
-          <Select name="month" options={months} value={searchParams.month} handleChange={handleChangeMonth}/>
-          <Select name={"changes"} value={searchParams.changes} options={changesOptions} handleChange={handleChangeFlightChanges}/>
+          <Select label={"Валюта"} options={currencies} value={searchParams.currency} handleChange={handleChangeCurrency}/>
+          <Select label={"Месяц"} options={months} value={searchParams.month} handleChange={handleChangeMonth}/>
+          <Select label={"Пересадки"} options={changesOptions} value={searchParams.changes} handleChange={handleChangeFlightChanges}/>
         </div>
       </form>
   );
