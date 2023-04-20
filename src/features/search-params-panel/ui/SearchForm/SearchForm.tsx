@@ -5,6 +5,7 @@ import {searchParamsSlice, selectSearchParams} from "../../searchParamsSlice";
 import {useAppDispatch, useAppSelector} from "../../../../app/store";
 import SelectIATA from "../SelectIATA/SelectIATA";
 import {IOption} from "../../model/types";
+import styles from "./SearchForm.module.css";
 
 export default function SearchForm() {
   // For sending search params to Redux Store
@@ -25,12 +26,16 @@ export default function SearchForm() {
   }
 
   return (
-      <form onSubmit={handleSubmit}>
-        <Select name="currency" options={currencies} value={searchParams.currency} handleChange={handleChangeCurrency}/>
-        <Select name="month" options={months} value={searchParams.month} handleChange={handleChangeMonth}/>
-        <SelectIATA label={"Откуда"} value={searchParams.origin} handleChange={handleChangeOrigin}/>
-        <SelectIATA label={"Куда"} value={searchParams.destination} handleChange={handleChangeDestination}/>
-        <Select name={"changes"} value={searchParams.changes} options={changesOptions} handleChange={handleChangeFlightChanges}/>
+      <form onSubmit={handleSubmit} className={styles.container}>
+        <div className={styles.directions}>
+          <SelectIATA label={"Откуда"} value={searchParams.origin} handleChange={handleChangeOrigin}/>
+          <SelectIATA label={"Куда"} value={searchParams.destination} handleChange={handleChangeDestination}/>
+        </div>
+        <div className={styles.options}>
+          <Select name="currency" options={currencies} value={searchParams.currency} handleChange={handleChangeCurrency}/>
+          <Select name="month" options={months} value={searchParams.month} handleChange={handleChangeMonth}/>
+          <Select name={"changes"} value={searchParams.changes} options={changesOptions} handleChange={handleChangeFlightChanges}/>
+        </div>
       </form>
   );
 }

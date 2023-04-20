@@ -18,6 +18,8 @@ function SelectIATA({label, value, handleChange}: ISelectIATAProps) {
           renderInput={(params) => <TextField {...params} label={label} />}
           value={value}
           onChange={handleChange}
+          isOptionEqualToValue={(option, value) => option.id === value.id}
+          sx={{ width: 400 }}
       />
   );
 }

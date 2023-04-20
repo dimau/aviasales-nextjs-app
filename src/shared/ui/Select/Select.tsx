@@ -13,8 +13,8 @@ interface ISelectProps {
 
 export default function Select({name, value, options, handleChange}: ISelectProps) {
   return (
-      <select name={name} onChange={handleChange}>
-        {options.map((option, index) => <option value={option.value} selected={option.value === value} key={index}>{option.title}</option>)}
+      <select name={name} onChange={handleChange} value={value}>
+        {options.map((option, index) => <option value={option.value} key={index}>{option.title}</option>)}
       </select>
   );
 }

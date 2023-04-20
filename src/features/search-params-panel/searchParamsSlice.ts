@@ -40,13 +40,13 @@ const searchParamsSlice = createSlice({
     },
   },
   // Special reducer for hydrating the state
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
+  extraReducers: builder => {
+    builder.addCase(HYDRATE, (state, action) => {
       return {
         ...state,
         ...action.payload.searchParams,
       };
-    },
+    })
   },
 });
 
