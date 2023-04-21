@@ -12,11 +12,11 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
 
-      <header className={styles.header}>
-        <h1>Календарь низких цен</h1>
-      </header>
-
       <main className={styles.main}>
+        <header className={styles.header}>
+          <h1>Календарь низких цен</h1>
+        </header>
+
         <SearchForm/>
         <SearchResults/>
       </main>
