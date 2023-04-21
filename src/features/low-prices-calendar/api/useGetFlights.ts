@@ -1,10 +1,10 @@
 import useSWR, { Fetcher } from 'swr'
 import { Answer } from "../../../pages/api/flights";
-import {IOption} from "../../search-params-panel/model/types";
-
-type FetcherParams = [string, string, string, IOption, IOption];
+import { IOption } from "../../search-params-panel/model/types";
 
 const flightsEndpoint = "/api/flights";
+
+type FetcherParams = [string, string, string, IOption, IOption];
 
 const fetcher: Fetcher<Answer, FetcherParams> = (params) => {
   const [endpoint, currency, month, origin, destination] = params;
@@ -12,7 +12,14 @@ const fetcher: Fetcher<Answer, FetcherParams> = (params) => {
       .then(res => res.json());
 }
 
-function useGetFlights({currency, month, origin, destination}) {
+interface IUseGetFlightsParams {
+  currency: string;
+  month: string;
+  origin: string;
+  destination: string;
+}
+
+function useGetFlights({currency, month, origin, destination}: IUseGetFlightsParams) {
   const key = [flightsEndpoint, currency, month, origin, destination];
   const { data, error, isLoading } = useSWR(currency !== "" ? key : null, fetcher);
   return {
