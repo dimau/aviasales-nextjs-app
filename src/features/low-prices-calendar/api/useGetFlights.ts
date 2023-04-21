@@ -1,5 +1,5 @@
 import useSWR, { Fetcher } from 'swr'
-import Answer from "../../../pages/api/flights";
+import { Answer } from "../../../pages/api/flights";
 import {IOption} from "../../search-params-panel/model/types";
 
 type FetcherParams = [string, string, string, IOption, IOption];

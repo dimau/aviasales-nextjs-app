@@ -39,4 +39,5 @@ async function handler(
   res.status(200).json(aviasalesResult);
 }
 
-export { handler as default};
+export {Answer};
+export default handler;
