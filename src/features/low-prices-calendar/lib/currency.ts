@@ -1,4 +1,4 @@
-const currencyMap = {
+const currencyMap: {[key: string]: string} = {
   "RUB": "₽",
   "EUR": "€",
   "USD": "$",

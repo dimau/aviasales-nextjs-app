@@ -1,4 +1,4 @@
-import {useAppSelector} from "../../../../app/store";
+import {useAppSelector} from "../../../../app/hooks";
 import {selectSearchParams} from "../../../search-params-panel/searchParamsSlice";
 import {useGetFlights} from "../../api/useGetFlights";
 import OneDayBlock from "../OneDayBlock/OneDayBlock";

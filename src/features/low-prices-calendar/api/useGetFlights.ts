@@ -15,8 +15,8 @@ const fetcher: Fetcher<Answer, FetcherParams> = (params) => {
 interface IUseGetFlightsParams {
   currency: string;
   month: string;
-  origin: string;
-  destination: string;
+  origin: IOption;
+  destination: IOption;
 }
 
 function useGetFlights({currency, month, origin, destination}: IUseGetFlightsParams) {

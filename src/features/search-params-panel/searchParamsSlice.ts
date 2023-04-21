@@ -1,6 +1,6 @@
 import {createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { HYDRATE } from 'next-redux-wrapper';
 import {AppState} from "../../app/store";
+import {APP_HYDRATE} from "../../app/actions"
 import {IOption} from "./model/types";
 
 interface ISearchParamsSlice {
@@ -41,7 +41,7 @@ const searchParamsSlice = createSlice({
   },
   // Special reducer for hydrating the state
   extraReducers: builder => {
-    builder.addCase(HYDRATE, (state, action) => {
+    builder.addCase(APP_HYDRATE, (state, action) => {
       return {
         ...state,
         ...action.payload.searchParams,

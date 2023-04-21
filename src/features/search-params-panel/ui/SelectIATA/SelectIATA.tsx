@@ -3,11 +3,12 @@ import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import codesIATA from "./codesIATA.json";
 import styles from "./SelectIATA.module.css";
+import {IOption} from "../../model/types";
 
 interface ISelectIATAProps {
   label: string;
-  value: string;
-  handleChange: (event: React.SyntheticEvent, value: string) => void;
+  value: IOption;
+  handleChange: (event: React.SyntheticEvent<Element, Event>, value: IOption | null) => void;
 }
 
 function SelectIATA({label, value, handleChange}: ISelectIATAProps) {

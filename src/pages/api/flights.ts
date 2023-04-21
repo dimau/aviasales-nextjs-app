@@ -22,6 +22,11 @@ async function handler(
 
   // Simple way to get config parameters from env values
   const API_KEY = process.env.AVIASALES_API_KEY;
+  if (!API_KEY) {
+    // TODO: logging
+    console.log("API_KEY is not defined as environment variable");
+    process.exit()
+  }
 
   // Prepare URL for request to Aviasales API
   const url = new URL("http://api.travelpayouts.com/v2/prices/month-matrix");
@@ -39,5 +44,5 @@ async function handler(
   res.status(200).json(aviasalesResult);
 }
 
-export {Answer};
+export type {Answer};
 export default handler;

@@ -1,4 +1,4 @@
-function daysInMonth (month, year) { // Use 1 for January, 2 for February, etc.
+function daysInMonth (month: number, year: number) { // Use 1 for January, 2 for February, etc.
   return new Date(year, month, 0).getDate();
 }
 

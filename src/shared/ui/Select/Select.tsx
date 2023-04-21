@@ -1,4 +1,4 @@
-import SelectMUI from '@mui/material/Select';
+import SelectMUI, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -12,7 +12,7 @@ interface ISelectProps {
   label: string;
   value: string;
   options: Option[];
-  handleChange: () => void;
+  handleChange: (event: SelectChangeEvent) => void;
 }
 
 export default function Select({label, value, options, handleChange}: ISelectProps) {

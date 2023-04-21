@@ -1,8 +1,8 @@
 import Select from "../../../../shared/ui/Select/Select";
 import {currencies, months, changesOptions } from "../../../../shared/ui/Select/constants";
-import React from "react";
+import React, {FormEvent} from "react";
 import {searchParamsSlice, selectSearchParams} from "../../searchParamsSlice";
-import {useAppDispatch, useAppSelector} from "../../../../app/store";
+import {useAppDispatch, useAppSelector} from "../../../../app/hooks";
 import SelectIATA from "../SelectIATA/SelectIATA";
 import { SelectChangeEvent } from '@mui/material/Select';
 import {IOption} from "../../model/types";
@@ -18,11 +18,15 @@ export default function SearchForm() {
   // Handlers for changing local search form state
   const handleChangeCurrency = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeCurrency(event.target.value));
   const handleChangeMonth = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeMonth(event.target.value));
-  const handleChangeOrigin = (event: React.SyntheticEvent, value: IOption) => dispatch(searchParamsSlice.actions.changeOrigin(value));
-  const handleChangeDestination = (event: React.SyntheticEvent, value: IOption) => dispatch(searchParamsSlice.actions.changeDestination(value));
   const handleChangeFlightChanges = (event: SelectChangeEvent) => dispatch(searchParamsSlice.actions.changeChanges(event.target.value));
+  const handleChangeOrigin = (event: React.SyntheticEvent<Element, Event>, value: IOption | null) => {
+    if (value) dispatch(searchParamsSlice.actions.changeOrigin(value));
+  }
+  const handleChangeDestination = (event: React.SyntheticEvent<Element, Event>, value: IOption | null) => {
+    if (value) dispatch(searchParamsSlice.actions.changeDestination(value));
+  }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
   }
 

@@ -3,4 +3,4 @@ interface IOption {
   id: string;
 }
 
-export { IOption };
+export type { IOption };
