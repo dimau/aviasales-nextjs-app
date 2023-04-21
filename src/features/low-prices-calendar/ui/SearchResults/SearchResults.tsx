@@ -2,7 +2,7 @@ import {useAppSelector} from "../../../../app/hooks";
 import {selectSearchParams} from "../../../search-params-panel/searchParamsSlice";
 import {useGetFlights} from "../../api/useGetFlights";
 import OneDayBlock from "../OneDayBlock/OneDayBlock";
-import styles from "./SearchResults.module.css";
+import styles from "./SearchResults.module.scss";
 import {daysInMonth, getDayFromFullDate, getMonthNumberFromFullDate, getYearFromFullDate} from "../../lib/calendar";
 import {IFlight} from "../../../../entities/Flight/model/types";
 
@@ -21,6 +21,7 @@ function SearchResults() {
 
   const daysInTotal = daysInMonth(getMonthNumberFromFullDate(searchParams.month), getYearFromFullDate(searchParams.month));
 
+  // Prepare map - array of all the flights for each day
   const datesAndFlights: {day: number, flights: IFlight[]}[] = [];
   for (let i = 1; i <= daysInTotal; i++) {
     const allFlightsOnDate = flights.filter(flight => getDayFromFullDate(flight.depart_date) === i && +flight.number_of_changes <= +searchParams.changes);

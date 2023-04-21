@@ -1,5 +1,5 @@
 import {IFlight} from "../../../../entities/Flight/model/types";
-import styles from "./OneDayBlock.module.css";
+import styles from "./OneDayBlock.module.scss";
 import {getCurrencySignFromString, sumPrettier} from "../../lib/currency";
 
 interface IOneDayBlockProps {
