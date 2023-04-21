@@ -7,11 +7,14 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>Flight Search</title>
-        <meta name="description" content="Demo application based on Aviasales API" />
+        <title>Календарь низких цен</title>
+        <meta name="description" content="Демо приложение на основе REST API Aviasales" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
+
+      <header className={styles.header}>
+        <h1>Календарь низких цен</h1>
+      </header>
 
       <main className={styles.main}>
         <SearchForm/>

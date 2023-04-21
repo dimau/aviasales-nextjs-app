@@ -22,8 +22,8 @@ function OneDayBlock({date, flights, currency}: IOneDayBlockProps) {
 
   return (
       <div className={styles.container}>
-        <div>{date}</div>
-        <div>{minPriceString}</div>
+        <div className={styles.date}>{date}</div>
+        <div className={styles.price}>{minPriceString}</div>
       </div>
   );
 }

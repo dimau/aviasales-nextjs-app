@@ -2,14 +2,31 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  width: 100%;
 }
 
 .directions {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .options {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
+  gap: 20px;
+}
+
+@media (min-width: 710px) {
+  .directions {
+    flex-direction: row;
+  }
+}
+
+@media (min-width: 710px) {
+  .options {
+    flex-direction: row;
+  }
 }
