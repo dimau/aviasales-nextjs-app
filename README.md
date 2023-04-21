@@ -1,17 +1,38 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Календарь низких цен
 
-## Getting Started
+Приложение построено на стеке Next.js + React + Redux + SWR и предназначено для поиска авиабилетов по заданному маршруту с минимальной ценой - по дням выбранного месяца
 
-First, run the development server:
+## Запуск на dev машине
 
+1. Копируем репозиторий и ставим все зависимости
+```bash
+git clone git@github.com:dimau/aviasales-nextjs-app.git
+cd aviasales-nextjs-app
+npm install
+```
+
+2. Создаем файл для хранения переменных окружения
+```bash
+touch .env.local
+```
+
+3. Открываем файл и записываем в него API ключ для Aviasales
+```bash
+AVIASALES_API_KEY=...
+```
+
+4. Запускаем приложение
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+5. Открываем в браузере приложение [http://localhost:3000](http://localhost:3000)
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/flights.ts`.
+## Сборка и запуск в продакшене
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+1. Подгтовка продакшен сборки приложения
+```bash
+npm run build
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+2. Пушим в git репозиторий и публикуем на Vercel
